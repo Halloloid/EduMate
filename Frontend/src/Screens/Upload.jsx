@@ -41,6 +41,7 @@ const Upload = () => {
       formData.append("study_hours_per_day",studyHours);
       formData.append("total_days",totalDays);
       formData.append("file",image);
+      formData.append("file2",image2);
       await axios.post(`http://localhost:3000/api/extractSyllabus`,formData,{headers:{"Content-Type":"multipart/form-data"}})
     } catch (error) {
       console.error(error);
@@ -142,7 +143,7 @@ const Upload = () => {
 
         <div className="mt-6">
           <label className="block font-semibold text-[#0000FF] mb-3 text-lg">
-            Upload Notes Image
+            Upload Notes PDF
           </label>
 
           <motion.label
@@ -158,12 +159,12 @@ const Upload = () => {
             ) : (
               <>
                 <FiUpload className="text-4xl text-[#0000FF] opacity-90 mb-3 group-hover:scale-110 transition" />
-                <span className="text-gray-600">Click to upload image</span>
+                <span className="text-gray-600">Click to upload pdf</span>
               </>
             )}
             <input
               type="file"
-              accept="image/*"
+              accept="application/pdf"
               onChange={handleFileChange2}
               className="absolute inset-0 opacity-0 cursor-pointer"
             />
